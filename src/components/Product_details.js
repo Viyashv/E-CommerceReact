@@ -29,6 +29,7 @@ export default function Product_details() {
               <div className="card-body">
                 <h5 className="card-title">Name:- {product.title.slice(0,15)}</h5>
                 <p className="card-text">Description:- {product.description.slice(0,95)}...</p>
+                <p className="card-text">Category:- {product.category}</p>
                 <p className="card-text">Price :- <del>&#8377;{product.price}</del>&#8377;{product.discountPercentage}</p>
               </div>
             </div>

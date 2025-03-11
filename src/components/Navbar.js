@@ -1,8 +1,18 @@
-import React from 'react'
+import React ,{useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 
 
 export default function Navbar() {
+  let [category , setCategory] = useState(null)
+  async function GetCategory() {
+    let response = await fetch("https://dummyjson.com/products/categories")
+    let data = await response.json()
+    setCategory(data)
+  }
+  
+  useEffect(()=>{
+    GetCategory()
+  },[])
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -24,13 +34,13 @@ export default function Navbar() {
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Category
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><hr className="dropdown-divider"/></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
+            {category && category.map((categories , index)=>{
+              return <li><a className="dropdown-item" href="#" key={index}>{categories.name}</a></li>
+            })
+            }
           </ul>
         </li>
       </ul>

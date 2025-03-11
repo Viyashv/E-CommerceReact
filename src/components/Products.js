@@ -26,6 +26,7 @@ export default function Products() {
                                 <div className="card-body">
                                     <h5 className="card-title">{product.title.slice(0,15)}</h5>
                                     <p className="card-text">{product.description.slice(0,95)}...</p>
+                                    <p className="card-text">{product.category}</p>
                                     <p className="card-text">Price :- <del>&#8377;{product.price}</del> Discount:- &#8377;{product.discountPercentage}</p>
                                     <Link to={`/product/${product.id}`} className="btn btn-primary">View more</Link>
                                 </div>
