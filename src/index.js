@@ -9,6 +9,7 @@ import Contact from './components/Contact.js';
 import { RouterProvider } from 'react-router-dom';
 import Products from './components/Products.js';
 import Product_details from './components/Product_details.js';
+import ProductByCategory from './components/ProductByCategory.js';
 
 const BrowserRouter = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const BrowserRouter = createBrowserRouter([
       {
         path: '/product/:id',
         element: <Product_details />
+      },
+      {
+        path: '/product/category/:name',
+        element: <ProductByCategory />
       }
     ]
   }

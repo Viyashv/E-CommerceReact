@@ -38,7 +38,7 @@ export default function Navbar() {
           </a>
           <ul className="dropdown-menu">
             {category && category.map((categories , index)=>{
-              return <li><a className="dropdown-item" href="#" key={index}>{categories.name}</a></li>
+              return (<li><Link className="dropdown-item" key={index} to={`/product/category/${categories.name}`}>{categories.name}</Link></li>)
             })
             }
           </ul>
