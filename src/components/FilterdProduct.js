@@ -16,7 +16,7 @@ export default function FilterdProduct(props) {
             </button>
             <ul className="dropdown-menu">{
                 filterdProduct && filterdProduct.map((product) => {
-                    return <li><button className='border-0 bg-white' onClick={()=>{props. onFilterProductsByCategory(product.name)}}>{product.name}</button></li>
+                    return <li><button className='dropdown-item' onClick={()=>{props.onFilterProductsByCategory(product.name)}}>{product.name}</button></li>
                 })
             }
             </ul>
