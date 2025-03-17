@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import FilterdProduct from './FilterdProduct'
 import SortProducts from './SortProducts'
-import Navbar from './Navbar'
 
 
 export default function Products() {

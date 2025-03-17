@@ -5,7 +5,6 @@ export default function Contact() {
   let { register, handleSubmit, formState: { errors } } = useForm();
   function CollectionData(data){
     console.log(data);
-    
   }
   return (
     <section className="gradient-custom">
@@ -31,9 +30,14 @@ export default function Contact() {
                     {errors.Username && errors.Username.type =="pattern" && "User name should only contains alphabets and no special characters"}
                   </p>
                   <div data-mdb-input-init className="form-outline form-white mb-4 form-floating text-dark">
-                    <input type="number" id="Phone_no" className="form-control form-control-lg" placeholder='' {...register('Phone_no', { required: true ,min:10 , max:10})} />
+                    <input type="number" id="Phone_no" className="form-control form-control-lg" placeholder='' {...register('Phone_no', { required: true ,minLength:10 , maxLength:10})} />
                     <label className="form-label" htmlFor="Phone_no">User Phone Number</label>
                   </div>
+                  <p className='text-danger'>
+                    {errors.Phone_no && errors.Phone_no.type =="required" && "User Phone Number is requried"}
+                    {errors.Phone_no && errors.Phone_no.type =="minLength" && "Phone No should not be less than 10"}
+                    {errors.Phone_no && errors.Phone_no.type =="maxLength" && "Phone No should not be more than 10"}
+                  </p>
 
                   {/* <p className="small mb-3 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p> */}
 

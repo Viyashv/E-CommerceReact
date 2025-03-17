@@ -10,6 +10,7 @@ import { RouterProvider } from 'react-router-dom';
 import Products from './components/Products.js';
 import Product_details from './components/Product_details.js';
 import ProductByCategory from './components/ProductByCategory.js';
+import {ThemeChanger} from "./context/ThemeProvider.js"
 
 const BrowserRouter = createBrowserRouter([
   {
@@ -39,11 +40,13 @@ const BrowserRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={BrowserRouter}>
-      <Home />
-    </RouterProvider>
-  </React.StrictMode>
+    <React.StrictMode>
+      <ThemeChanger>
+          <RouterProvider router={BrowserRouter}>
+            <Home />
+          </RouterProvider>
+      </ThemeChanger>
+    </React.StrictMode>
 );
 
 

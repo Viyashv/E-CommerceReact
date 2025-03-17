@@ -1,5 +1,6 @@
 import React ,{useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import {themeContext} from '../context/ThemeProvider'
 
 
 export default function Navbar() {
@@ -48,6 +49,9 @@ export default function Navbar() {
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
+      <span className='mx-2 text-light'>|</span>
+      <i class="bi bi-brightness-high-fill text-light mx-1" onClick={()=> {setTheme("light")}}></i>
+      <i class="bi bi-moon-fill text-light" onClick={()=> {setTheme("dark")}}></i>
     </div>
   </div>
 </nav>
