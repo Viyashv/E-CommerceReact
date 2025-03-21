@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import {themeContext} from "../context/ThemeProvider"
 
 export default function Contact() {
+  let {ThemeStyle} = useContext(themeContext)
   let { register, handleSubmit, formState: { errors } } = useForm();
   function CollectionData(data){
     console.log(data);
   }
   return (
     <section className="gradient-custom">
-      <div className="container py-5">
+      <div className="container py-5" style={ThemeStyle}>
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-12 col-md-8 col-lg-6 col-xl-5">
             <div className="card bg-dark text-white" style={{ borderRadius:"1"+"rem"}}>

@@ -3,16 +3,18 @@ import { createContext, useState } from "react";
 export let themeContext = createContext()
 
 export function ThemeChanger(props) {
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState("light")
+    // console.log(theme);
+    
     let ThemeStyle = {}
     if (theme === 'light') {
-        ThemeStyle = {backgroundColor:'light' , color:"black"}
+        ThemeStyle = {backgroundColor:'white' , color:"black"}
     }
     else{
-        ThemeStyle = {backgroundColor:'dark', color:"white"}
+        ThemeStyle = {backgroundColor:'black', color:"white"}
     }
     return(
-    <themeContext.Provider values={{theme , setTheme , ThemeStyle}}>
+    <themeContext.Provider value={{theme , setTheme , ThemeStyle}}>
         {props.children}
     </themeContext.Provider>)
 } 

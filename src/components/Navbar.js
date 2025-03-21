@@ -1,16 +1,21 @@
-import React ,{useEffect, useState} from 'react'
+import React ,{useContext, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import {themeContext} from '../context/ThemeProvider'
+import {useForm} from "react-hook-form"
 
 
 export default function Navbar() {
+  let {register , handleSubmit , formState:{errors}} = useForm()
+  let {theme, setTheme}=useContext(themeContext)
   let [category , setCategory] = useState(null)
   async function GetCategory() {
     let response = await fetch("https://dummyjson.com/products/categories")
     let data = await response.json()
     setCategory(data)
   }
-  
+  function onSubmit(data){
+    console.log(`${data.search}`)
+  }
   useEffect(()=>{
     GetCategory()
   },[])
@@ -45,13 +50,17 @@ export default function Navbar() {
           </ul>
         </li>
       </ul>
-      <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div className='d-flex flex-column my-auto'>
+        <form className="d-flex" role="search" onSubmit={handleSubmit(onSubmit)} >
+          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" {...register('search' ,{required:true})} />
+          <button className="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <p className='m-0 text-danger'>
+          {errors.search && errors.search.type=="required" && "input is required"}
+        </p>
+      </div>
       <span className='mx-2 text-light'>|</span>
-      <i class="bi bi-brightness-high-fill text-light mx-1" onClick={()=> {setTheme("light")}}></i>
-      <i class="bi bi-moon-fill text-light" onClick={()=> {setTheme("dark")}}></i>
+      {theme==="light" ? <i class="bi bi-moon-fill text-light" onClick={()=> {setTheme("dark")}}></i> : <i class="bi bi-brightness-high-fill text-light mx-1" onClick={()=> {setTheme("light")}}></i> }
     </div>
   </div>
 </nav>
